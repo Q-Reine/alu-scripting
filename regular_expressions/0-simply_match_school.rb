@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env ruby
 '''
 Defines function that queries the Reddit API and returns the
 number of subscribers
