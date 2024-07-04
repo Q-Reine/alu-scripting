@@ -15,9 +15,9 @@ def number_of_subscribers(subreddit):
     """
     if subreddit is None or not isinstance(subreddit, str):
         return(0)
-    endpoint = "https://www.reddit.com"
+    endpoint = 'https://www.reddit.com'
     headers = {
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"}
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '}
     info = requests.get('{}/r/{}/about.json'.format(
             endpoint,
             subreddit), headers=headers, allow_redirects=False)
