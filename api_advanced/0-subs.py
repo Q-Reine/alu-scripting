@@ -1,20 +1,19 @@
 #!/usr/bin/python3
-"""Return number of subscribers for a given subreddit"""
+"""
+Query the Reddit API to get the number of subscribers for a given subreddit
+"""
+
 import requests
 
+
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Mozilla/5.0'}
-
-    response = requests.get(url, headers=headers)
-
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
-    else:
+    """
+    Returns the number of subscribers for a given subreddit
+    """
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code != 200:
         return 0
-
-# Test the function
-subreddit = 'learnpython'
-print(f"The number of subscribers in r/{subreddit}: {number_of_subscribers(subreddit)}")
+    data = response.json().get('data')
+    return data.get('subscribers')
